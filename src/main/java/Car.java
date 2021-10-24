@@ -1,6 +1,52 @@
+import java.util.Arrays;
+import java.util.RandomAccess;
 import java.util.Scanner;
+import java.util.stream.Collectors;
 
 public class Car {
+
+    private String carName;
+    private int position=0;
+
+
+
+
+    public Car(){
+
+    }
+
+
+    void move(){
+        int random=randomNumber();
+
+        // 5
+        if(random >= 4) {
+            position++;
+        }
+    }
+
+    int getPosition(){
+        return position;
+    }
+
+    void OutPut(){
+        String line=toLine(position);
+
+
+    }
+
+
+
+    // postion 만큼 - 움직이기
+    String toLine(int position){
+
+        StringBuilder sb=new StringBuilder();
+        for(int i=0; i<position; i++){
+            sb.append("-");
+        }
+
+        return carName+":"+sb;
+    }
 
 
     /**
@@ -14,24 +60,16 @@ public class Car {
 
      */
 
-
+    // 5
     int randomNumber(){
         int random= (int) (Math.random()*10);
+
 
         return random;
     }
 
     // 2,3
-    String []check(String text){
-        String[] str=text.split(",");
+    // 배열로 분리가된다
 
-        for(String s: str){
-            if(s.length() >5){
-                throw new IllegalArgumentException();
-            }
-        }
-
-        return str;
-    }
 }
 

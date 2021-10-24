@@ -30,13 +30,8 @@ public class CarTest {
         c=new Car();
     }
 
-    
-    @Test
-    void 이름체크(){
-        String str="abc,def";
-        String[] s=c.check(str);
 
-        assertEquals("abc",s[0]);
-        assertEquals("def", s[1]);
-    }
+//    @Test
+////    void 이름체크(){
+////    }
 }
