@@ -17,16 +17,15 @@ public class RacingGame {
             carNames=sc.nextLine().split(",");
             System.out.println(Arrays.toString(carNames));
 
-            if(!isAvailbe(carNames) || !BlankName(carNames)){
-               continue;
+            if(isAvailbe(carNames) && BlankName(carNames)) {
+                break;
             }
 
-            break;
         }
         // 생성자 리스트를 만들어주고
         List<Car> carList=new ArrayList<>();
-        for(String name: carNames){
 
+        for(String name: carNames){
             // 입력한 자동차가 들어간다
             carList.add(new Car(name));
         }
@@ -36,19 +35,32 @@ public class RacingGame {
             System.out.println("시도할 횟수는?");
             n=sc.nextLine();
 
-            if(!checkInteger()){
+            if(checkInteger(n)){
                 break;
             }
 
         }
 
+        System.out.println();
+
+        for(int i=0; i<Integer.parseInt(n); i++){
+            System.out.println("실행결과");
+
+            for(Car car: carList){
+                car.move();
+                System.out.println(car.toString());
+
+            }
+            System.out.println();
+        }
+
     }
 
     // 이동할 입력받은 숫자가 1이상 양수인지 확인
-    public boolean checkInteger(){
+    public boolean checkInteger(String userNum){
 
-        int userNum=Integer.parseInt(n);
-        if(userNum <= 0){
+        int num=Integer.parseInt(userNum);
+        if(num <= 0){
             System.out.println("1이상 숫자만 입력해주세요");
             return false;
         }

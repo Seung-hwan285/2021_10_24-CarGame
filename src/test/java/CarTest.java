@@ -42,9 +42,11 @@ public class CarTest {
 
         String car2[]={""};
         assertFalse(r.BlankName(car2));
-
-
-
+    }
+    @Test
+    void 이동횟수체크(){
+        String userNum="0";
+        assertFalse(r.checkInteger(userNum));
     }
 
 

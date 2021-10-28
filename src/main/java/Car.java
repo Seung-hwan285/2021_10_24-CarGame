@@ -13,8 +13,20 @@ public class Car {
 
 
     public void move(){
+        // 0~9 숫자
+        int random = (int) (Math.random()*10);
+        if (random >=4){
+            postiong++;
+        }
+    }
 
-        postiong++;
+
+    public String toString(){
+        StringBuilder sb=new StringBuilder();
+        for(int i=0; i<postiong; i++){
+            sb.append("-");
+        }
+        return carName+":"+sb;
     }
 
 
