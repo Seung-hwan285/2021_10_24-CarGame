@@ -5,18 +5,20 @@ import java.util.List;
 import java.util.Scanner;
 
 public class RacingGame {
+    String carNames[];
 
+    String n;
     void playgame(Scanner sc){
 
-        String carNames[];
+
 
         while(true){
-
+            System.out.println("경주할 자동차 이름 입력하세요 , 기준입니다");
             carNames=sc.nextLine().split(",");
             System.out.println(Arrays.toString(carNames));
 
             if(!isAvailbe(carNames) || !BlankName(carNames)){
-                continue;
+               continue;
             }
 
             break;
@@ -30,7 +32,29 @@ public class RacingGame {
         }
 
 
+        while(true){
+            System.out.println("시도할 횟수는?");
+            n=sc.nextLine();
+
+            if(!checkInteger()){
+                break;
+            }
+
+        }
+
     }
+
+    // 이동할 입력받은 숫자가 1이상 양수인지 확인
+    public boolean checkInteger(){
+
+        int userNum=Integer.parseInt(n);
+        if(userNum <= 0){
+            System.out.println("1이상 숫자만 입력해주세요");
+            return false;
+        }
+        return true;
+    }
+
 
     // 빈값제한
     public boolean BlankName (String []carName){
@@ -57,7 +81,8 @@ public class RacingGame {
                 return false;
             }
         }
-            return true;
+
+        return true;
     }
 
 }

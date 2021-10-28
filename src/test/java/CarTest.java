@@ -42,7 +42,11 @@ public class CarTest {
 
         String car2[]={""};
         assertFalse(r.BlankName(car2));
+
+
+
     }
+
 
 //    @Test
 ////    void 이름체크(){
