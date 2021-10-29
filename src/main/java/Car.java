@@ -1,8 +1,10 @@
+import javax.print.DocFlavor;
+
 public class Car {
 
     private int postiong;
     private String carName;
-
+    static StringBuilder sb;
     public Car(String name) {
         this.carName=name;
     }
@@ -10,7 +12,6 @@ public class Car {
     public Car() {
 
     }
-
 
     public void move(){
         // 0~9 숫자
@@ -21,13 +22,24 @@ public class Car {
     }
 
 
+    public String getCarName(){
+        return carName;
+    }
+
     public String toString(){
-        StringBuilder sb=new StringBuilder();
+        sb=new StringBuilder();
         for(int i=0; i<postiong; i++){
             sb.append("-");
         }
-        return carName+":"+sb;
+        int n=winner(sb);
+        return carName+":"+sb+" "+n;
     }
+
+    public int winner(StringBuilder sb){
+        int n=sb.length();
+        return n;
+    }
+
 
 
     public int getPostiong(){
