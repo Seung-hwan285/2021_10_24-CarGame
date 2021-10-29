@@ -6,9 +6,9 @@ public class RacingGame {
     String carNames[];
     static Car c;
     String n;
+    static StringBuilder sb;
+
     void playgame(Scanner sc){
-
-
 
         while(true){
             System.out.println("경주할 자동차 이름 입력하세요 , 기준입니다");
@@ -27,48 +27,58 @@ public class RacingGame {
             // 입력한 자동차가 들어간다
             carList.add(new Car(name));
         }
-
-
-        while(true){
-            System.out.println("시도할 횟수는?");
-            n=sc.nextLine();
-
-            if(checkInteger(n)){
-                break;
-            }
-
-        }
+        // 몇번 진행할건지
+        n=new User().playUser();
 
         System.out.println();
+        // 실행 결과 출력e
+        gameResult(carList);
 
-        for(int i=0; i<Integer.parseInt(n); i++) {
-            System.out.println("실행결과");
+        // 우승자 출력
+        winnerUser(carList);
+    }
 
-            for (Car car : carList) {
-                car.move();
-                System.out.println(car.toString());
+    /**
+     * 우승자  출력
+     */
+    private void winnerUser(List<Car> carList){
 
-            }
-            System.out.println();
-        }
-
+        sb=new StringBuilder("우승자: ");
+        // 내림차순으로 정렬
+        // why? 맨앞에 있는 가장 큰값을 가져오기위해서
         carList=sortCarList(carList);
 
-        StringBuilder sb=new StringBuilder("우승자 :");
-
-        // 내림차순으로 정렬한 가장 큰값을 가져옴
-        int bestPostion=carList.get(0).getPostiong();
-        for(Car car : carList){
-
-            //만약 값이 같다면 ","로 결합해서 값을 출력
+        int bestPostion = carList.get(0).getPostiong();
+        for(Car car:carList){
             if(car.getPostiong() == bestPostion){
                 sb.append(car.getCarName()+",");
             }
+
         }
         // 마지막 글자 , 자르기
         // 맨 앞부터 마지막 1 글자 (,) 자르기
-        System.out.println((sb.substring(0,sb.length()-1)));
-
+        System.out.println(sb.substring(0,sb.length()-1));
+    }
+    User user=new User();
+    /**
+     *
+     * @param carList 자동차 리스트 받아서 출력
+     * 실행 결과 출력 메서드
+     */
+    private void gameResult(List<Car> carList){
+        try {
+            for (int i = 0; i < Integer.parseInt(n); i++) {
+                System.out.println("실행 결과");
+                for (Car car : carList) {
+                    car.move();
+                    System.out.println(car.toString());
+                }
+                System.out.println();
+            }
+        }
+        catch (NumberFormatException e){
+            System.out.println("null 값 들어옴");
+        }
     }
 
     // carList 내림차순 정렬 -> 가장 첫번째 Car 객체의 postion 값을 가장 큰값으로 만든다

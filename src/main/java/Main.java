@@ -6,5 +6,7 @@ public class Main {
         final Scanner sc=new Scanner(System.in);
 
         new RacingGame().playgame(sc);
+
+
     }
 }
