@@ -17,9 +17,8 @@ public class User {
         return getN();
     }
 
-    private boolean checkInteger(String n) {
+    public boolean checkInteger(String n) {
         int userNum=Integer.parseInt(n);
-
 
         if(userNum <=0){
             System.out.println("숫자 1이싱만 입력해주세요!!");

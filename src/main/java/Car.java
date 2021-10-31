@@ -21,7 +21,6 @@ public class Car {
         }
     }
 
-
     public String getCarName(){
         return carName;
     }
@@ -39,8 +38,6 @@ public class Car {
         int n=sb.length();
         return n;
     }
-
-
 
     public int getPostiong(){
         return postiong;

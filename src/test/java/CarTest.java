@@ -26,12 +26,13 @@ public class CarTest {
 
     public Car c;
     private RacingGame r;
-
+    private User u;
 
     @BeforeEach
     void 초기(){
         c=new Car();
         r=new RacingGame();
+        u=new User();
     }
 
     @Test
@@ -46,7 +47,7 @@ public class CarTest {
     @Test
     void 이동횟수체크(){
         String userNum="0";
-        assertFalse(r.checkInteger(userNum));
+        assertFalse(u.checkInteger(userNum));
     }
 
 

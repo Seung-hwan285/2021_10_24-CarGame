@@ -8,6 +8,8 @@ public class RacingGame {
     String n;
     static StringBuilder sb;
 
+    private int bestPostion;
+
     void playgame(Scanner sc){
 
         while(true){
@@ -39,6 +41,25 @@ public class RacingGame {
     }
 
     /**
+     * 우승자 값이 같으면 둘다 출력 ,분리해서
+     */
+    private void joinWin(List<Car> carList){
+        for(Car car: carList){
+            if(car.getPostiong() == bestPostion){
+                sb.append(car.getCarName()+",");
+            }
+        }
+    }
+
+
+    /**
+     * 내림차순으로 정렬한 carList에서 가장 큰값 가져오기
+     */
+    private int bestPostionUser(List<Car> carList){
+        return bestPostion = carList.get(0).getPostiong();
+    }
+
+    /**
      * 우승자  출력
      */
     private void winnerUser(List<Car> carList){
@@ -48,18 +69,18 @@ public class RacingGame {
         // why? 맨앞에 있는 가장 큰값을 가져오기위해서
         carList=sortCarList(carList);
 
-        int bestPostion = carList.get(0).getPostiong();
-        for(Car car:carList){
-            if(car.getPostiong() == bestPostion){
-                sb.append(car.getCarName()+",");
-            }
 
-        }
+        //내림차순으로 정렬한 carList에서 가장 큰값 가져오기
+        bestPostion = bestPostionUser(carList);
+
+        // 우승자가 값이 같으면 둘다 ,분리해서 출력
+        joinWin(carList);
         // 마지막 글자 , 자르기
         // 맨 앞부터 마지막 1 글자 (,) 자르기
         System.out.println(sb.substring(0,sb.length()-1));
     }
-    User user=new User();
+
+
     /**
      *
      * @param carList 자동차 리스트 받아서 출력
@@ -88,28 +109,11 @@ public class RacingGame {
     }
 
 
-    // 이동할 입력받은 숫자가 1이상 양수인지 확인
-    public boolean checkInteger(String userNum){
-
-        int num=Integer.parseInt(userNum);
-        if(num <= 0){
-            System.out.println("1이상 숫자만 입력해주세요");
-            return false;
-        }
-        return true;
-    }
-
-
     // 빈값제한
     public boolean BlankName (String []carName){
         for(String s: carName){
-            if (s.isEmpty()){
-                System.out.println("빈값이 있습니다.");
-                return false;
-            }
-
-            if(s.contains(" ")){
-                System.out.println("공백 값이 있습니다");
+            if (s.isEmpty() || s.contains(" ")) {
+                System.out.println("빈값 or 공백이 있습니다.");
                 return false;
             }
         }
